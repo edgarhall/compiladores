@@ -13,6 +13,7 @@ export class AppComponent {
   texto: string[] = [];
   Variables: string[] = [];
   Terminales: string[] = [];
+  objectoVariablesProducciones= [{variable: "", production: "" }];
 
   onDrop(e: any) {
     e.stopPropagation();
@@ -46,6 +47,7 @@ export class AppComponent {
   manageArray(array: string[]){
     this.findVariables(array);
     this.findTerminales(array);
+    this.buscarVariablesYProducciones(array);
   }
 
   findVariables(array: string[]){
@@ -99,5 +101,13 @@ export class AppComponent {
       terminal = terminal.toString().replaceAll("'", "");
     });
     this.Terminales = term;
+  }
+
+  buscarVariablesYProducciones(arreglo: string[]){
+    this.objectoVariablesProducciones = [];
+    arreglo.forEach(element =>{
+      const separate = element.split(":");
+      this.objectoVariablesProducciones.push({variable: separate[0], production: separate[1].replaceAll("|", "<br/>")});
+    });
   }
 }

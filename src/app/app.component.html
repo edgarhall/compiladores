@@ -29,5 +29,26 @@
         </tr>
       </table>
     </div>
+<div class="col border border-success justify-content-center">
+  <table class="table table-bordered">
+    <thead>
+      <td>
+        Variable
+      </td>
+      <td>
+        Producción
+      </td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let object of objectoVariablesProducciones">
+        <td>
+          {{object.variable}}
+        </td>
+        <td [innerHTML]="object.production">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   </div>
 </div>
